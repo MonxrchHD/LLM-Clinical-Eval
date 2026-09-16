@@ -1,9 +1,14 @@
+from dotenv import load_dotenv
+import os
+import anthropic
+
 def build_consultant_prompt(case_text):
     prompt = f"""You are my clinical consultant. I am a clinician evaluating a patient case. Using the provided patient case and current, generally accepted clinical guidelines relevant to the presenting condition, provide definitive clinical recommendations with patient-specific rationale.
 
 If clinically important information is missing, state what information is needed and explain how it would affect your recommendation. If a topic is not applicable to the case, state that it is not applicable and briefly explain why.
 
 You will be assessed on clinical accuracy, prioritization, guideline-concordant reasoning, dosing/titration appropriateness (if applicable), safety, and feasibility. Do not include links. Do not use bold, italics, underlining, emojis, highlighting, or tables. Format your response using an alphanumerical outline with the following progression: I, A, 1, a, i.
+Be concise. For each lettered/numbered item, provide your determination and the key supporting rationale in 1–3 sentences — do not restate general textbook background, enumerate exhaustive differentials, or explain concepts not specific to this patient. Prioritize depth only on the items most clinically significant to this case; brief acknowledgment is sufficient for items of lower relevance.
 
 I. Clinical decision-making and chief complaint prioritization
 A. State the chief complaint clearly and using appropriate clinical terminology.
@@ -58,5 +63,17 @@ Allergies: NKDA.
 Labs (today): Sodium 133 mEq/L, potassium 4.2 mEq/L, creatinine 1.3 mg/dL (baseline 1.0 mg/dL), BNP 1450 pg/mL (baseline ~300 pg/mL), unremarkable CBC.
 
 Vitals: BP 128/78, HR 88 (irregularly irregular), RR 20, SpO2 94% on room air, weight up 6 lb from last visit."""
-    result = build_consultant_prompt(case_text)
-    print(result)
+
+
+
+
+    load_dotenv()
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+
+    response = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=10000,
+        messages=[{"role": "user", "content": build_consultant_prompt(case_text)}]
+    )
+    print(response.content[0].text)
+    print(response.stop_reason)
