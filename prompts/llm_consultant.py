@@ -2,6 +2,7 @@ from dotenv import load_dotenv
 import os
 import anthropic
 
+
 def build_consultant_prompt(case_text):
     prompt = f"""You are my clinical consultant. I am a clinician evaluating a patient case. Using the provided patient case and current, generally accepted clinical guidelines relevant to the presenting condition, provide definitive clinical recommendations with patient-specific rationale.
 
@@ -47,6 +48,7 @@ Here is the the case for you to evaluate:
 """
     return prompt
 
+
 if __name__ == "__main__":
     case_text = """Chief complaint: Progressive shortness of breath and leg swelling over the past 10 days.
 
@@ -64,16 +66,14 @@ Labs (today): Sodium 133 mEq/L, potassium 4.2 mEq/L, creatinine 1.3 mg/dL (basel
 
 Vitals: BP 128/78, HR 88 (irregularly irregular), RR 20, SpO2 94% on room air, weight up 6 lb from last visit."""
 
-
-
-
     load_dotenv()
     client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
 
     response = client.messages.create(
         model="claude-haiku-4-5-20251001",
         max_tokens=10000,
-        messages=[{"role": "user", "content": build_consultant_prompt(case_text)}]
+        messages=[
+            {"role": "user", "content": build_consultant_prompt(case_text)}]
     )
     print(response.content[0].text)
     print(response.stop_reason)

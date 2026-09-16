@@ -5,4 +5,3 @@ with open("rubric/example_rubric.yaml") as f:
     data = yaml.safe_load(f)
 rubric = build_rubric(data)
 print(rubric)
-
