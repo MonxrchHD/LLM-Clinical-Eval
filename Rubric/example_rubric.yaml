@@ -1,0 +1,160 @@
+rubric_name: "Clinical Reasoning Validation"
+total_points: 42
+domains:
+  - name: "Clinical Decision Making and CC priortization"
+    max_points: 10
+    items:
+      - id: "A-1"
+        topic: "Individualized chief complaint stated"
+        criteria:
+          0: "No individualized chief complaint stated"
+          1: "Chief complaint stated, but is vague and does not use proper terminology"
+          2: "Chief complaint is stated clearly and uses proper terminology"
+      - id: "A-2"
+        topic: "Chief Complaint is appropriate and rationalized"
+        criteria:
+          0: "Chief Complaint clearly does not match the findings"
+          1: "Chief complaint is prioritized, but rationale is unclear or not supported by evidence"
+          2: "Chief complaint is prioritized with clear rationale and supported by evidence"
+      - id: "A-3"
+        topic: "Therapeutic intervention recognition"
+        criteria:
+          0: "Misclassifies or ignores choice of optimization or intensification of therapy"
+          1: "Partially recognizes the need for optimization or intensification of therapy, but does not provide a clear plan"
+          2: "Clearly recognizes the need for optimization or intensification of therapy and provides a clear plan based on current regimen and patient-specific factors"
+      - id: "A-4"
+        topic: "Information gap recognition"
+        criteria:
+          0: "Fails to identify critical missing data or information gaps"
+          1: "Recognizes some information gaps, but does not provide a clear plan to address them"
+          2: "Clearly recognizes information gaps and provides a clear plan to address them"
+      - id: "A-5" 
+        topic: "Clinical reasoning"
+        criteria:
+          0: "Fails to provide clear clinical reasoning based on patient information and clinical findings for decisions made"
+          1: "Provides clinical reasoning based on patient data and clinical findings, but lacks clarity or completeness"
+          2: "Clearly and comprehensively provides clinical reasoning based on patient information and clinical findings for decisions made"
+  - name: "Pharmacotherapy and Comorbiditiy Selection"
+    max_points: 8
+    items:
+      - id: "B-1"
+        topic: "Comorbiditiy slection"
+        criteria:
+          0: "Missd/Incorrectly identifies patient's comorbidities"
+          1: "Partially recognizes patient's comorbidities, but with some inaccuracies"
+          2: "Appropriately identifies patient's comorbidities with accuracy and completeness"
+      - id: "B-2"
+        topic: "Comorbidity concurrent therapy selection"
+        criteria:
+          0: "Inocrrect therapy with respect to cheif complaint and comorbidities"
+          1: "Correct therapy selection but lacks rationale or consideration of comorbidities"
+          2: "Correctly slects therapy with clear rationale and consideration of comorbidities"
+      - id: "B-3"
+        topic: "Existing regimen optimization"
+        criteria:
+          0: "Fails to recognize existing medications the patient is taking"
+          1: "Recognizes the need for optimization, but does not provide a clear plan"
+          2: "Clearly recognizes the need for optimization and provides a clear plan based on current regimen and patient-specific factors"
+      - id: "B-4"
+        topic: "Guideline adherence"
+        criteria:
+          0: "Fails to recognize or adhere to relevant clinical guidelines"
+          1: "Partially adheres to guidelines, but with some inaccuracies or omissions"
+          2: "Clearly recognizes and adheres to relevant clinical guidelines with accuracy and completeness"
+  - name: "Dosing, Titration, and medication execution"
+    max_points: 8
+    items:
+      - id: "C-1"
+        topic: "New Medication Starting Dose"
+        criteria:
+          0: "Incorrect/Absent recognition of appropriate starting dose for new medication"
+          1: "Some doses recognized, but others incorrect or absent"
+          2: "Clear recognition and calculation of appropriate starting doses"
+      - id: "C-2"
+        topic: "New Medication Titration"
+        criteria:
+          0: "Incorrect/Absent recognition of appropriate titration for new medication"
+          1: "Incomplete scheduling of medication titration"
+          2: "Clear scheduling and timing of medication titration"
+      - id: "C-3"
+        topic: "Existing Medication Titration"
+        criteria:
+          0: "Incorrect/Absent recognition of appropriate titration for existing medication"
+          1: "Incomplete scheduling of medication titration"
+          2: "Clear scheduling and timing of medication titration"
+      - id: "C-4"
+        topic: "Hepatic and Renal Dose Adjustments"
+        criteria:
+          0: "Fails to recognize or execute appropriate adjustment to renal or hepatic conditions"
+          1: "Partially recognizes and executes dose adjustments, but with some inaccuracies or omissions"
+          2: "Clearly recognizes and executes appropriate dose adjustments with accuracy and completeness"
+  - name: "Patient safety and Monitoring"
+    max_points: 8
+    items:
+      - id: "D-1"
+        topic: "Adverse Drug Reaction Recognition"
+        criteria:
+          0: "Fails to recognize potential adverse drug reactions or interactions"
+          1: "Partially recognizes potential adverse drug reactions or interactions, but with some inaccuracies or omissions"
+          2: "Clearly recognizes potential adverse drug reactions or interactions with accuracy and completeness"
+      - id: "D-2"
+        topic: "Monitoring Plan Development"
+        criteria:
+          0: "Fails to develop a monitoring plan for the patient"
+          1: "Develops a monitoring plan, but lacks clarity or completeness"
+          2: "Develops a clear and comprehensive monitoring plan for the patient"
+      - id: "D-3"
+        topic: "Missed Contraindications"
+        criteria:
+          0: "Fails to identify or address potential contraindications for the prescribed medication with respect to patient's current findings and comorbidities"
+          1: "Identifies some contraindications, but with some inaccuracies or omissions"
+          2: "Clearly identifies and addresses potential contraindications with accuracy and completeness"
+      - id: "D-4"
+        topic: "Labs and Monitoring"
+        criteria:
+          0: "Fails to recognize or order appropriate base line and follow-up labs for the patient"
+          1: "Partially recognizes and orders either baseline or follow-up labs, but with some inaccuracies or omissions"
+          2: "Clearly recognizes and orders both baseline and follow-up labs and with accuracy and completeness" 
+  - name: "Communication and Documentation"
+    max_points: 4
+    items:
+      - id: "E-1"
+        topic: "Documentation of Clinical Reasoning"
+        criteria:
+          0: "Fails to document clinical reasoning or rationale for decisions made"
+          1: "Documents clinical reasoning, but lacks clarity or completeness"
+          2: "Clearly and comprehensively documents clinical reasoning and rationale for decisions made"
+      - id: "E-2"
+        topic: "Patient Communication"
+        criteria:
+          0: "Fails to communicate effectively with the patient regarding their care plan"
+          1: "Communicates with the patient, but lacks clarity or completeness"
+          2: "Clearly and effectively communicates with the patient regarding their care plan, including risks, benefits, and alternatives"
+  - name: "Follow-up and Continuity of Care"
+    max_points: 4
+    items:
+      - id: "F-1"
+        topic: "Follow-up Plan Development"
+        criteria:
+          0: "Fails to develop a follow-up plan for the patient"
+          1: "Develops a follow-up plan, but lacks clarity or completeness"
+          2: "Develops a clear and comprehensive follow-up plan for the patient, including timing and frequency of follow-up visits and monitoring"
+      - id: "F-2"
+        topic: "Continuity of Care Coordination"
+        criteria:
+          0: "Fails to coordinate care with other healthcare providers involved in the patient's care"
+          1: "Coordinates care with other healthcare providers, but lacks clarity or completeness"
+          2: "Clearly and effectively coordinates care with other healthcare providers involved in the patient's care, including communication of relevant information and collaboration on treatment decisions"
+flags:
+  - name: "Critical Errors"
+    description: "Any critical errors that could result in patient harm or adverse outcomes"
+    reported_separately: True
+  - name: "Unsupported Recommendations"
+    description: "Any recommendations made that are not supported by evidence or clinical guidelines"
+    reported_separately: True
+  - name: "Scope Violation"
+    description: "Any recommendations made that are outside the scope of the chief complaint"
+    reported_separately: True
+  - name: "Major Omission"
+    description: "Failure to recommend a high-priority intervention that is clearly indicated based on the patient's presentation and clinical findings"
+    reported_separately: True
