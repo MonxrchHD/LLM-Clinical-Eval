@@ -1,9 +1,10 @@
 from objects import Item, Domain, Rubric, build_items, build_domains, build_rubric
 import yaml
 from prompts.llm_consultant import build_consultant_prompt, get_consultant_response
-from call_API import call_claude
+from call_API import call_claude, DEFAULT_MODEL
 import json
-
+from data_logger import build_data_logger
+from case_input import get_case_input
 def calculate_total(judge_scores):
     total_score = 0
     for score in judge_scores.values():
@@ -38,7 +39,8 @@ Now provide the complete JSON object with a score for every item ID in the rubri
     return prompt
 
 if __name__ == "__main__":
-    response, case = get_consultant_response()
+    info = get_case_input()
+    response, case = get_consultant_response(info)
     response_text = response
     case_text = case
 
@@ -49,13 +51,20 @@ if __name__ == "__main__":
             rubric_text += f"  Item: {item.id}, Topic: {item.topic}, Criteria: {item.criteria}\n"
 
 
-    scores = call_claude(build_llm_judge(rubric_text, case_text, response_text), model = "claude-haiku-4-5-20251001",  max_tokens = 10000)
+    scores = call_claude(build_llm_judge(rubric_text, case_text, response_text), model = DEFAULT_MODEL,  max_tokens = 10000)
     if scores.startswith("```json"):
         scores = scores.removeprefix("```json").removesuffix("```").strip()
     judge_scores = json.loads(scores)
     total_score = calculate_total(judge_scores)
-    demo = response_text.split("\n")
-    example = "\n".join(demo[:10])
-    print(example)
+    print(judge_scores)
     print(f"Total score: {total_score} / {rubric.total_points}")
-        
+
+    build_data_logger(
+            raw_case = info,
+            case_text = case_text,
+            response_text = response,
+            item_score = judge_scores,
+            total_score = total_score,
+            model_name = DEFAULT_MODEL,
+            rubric_version = "v1"
+    )

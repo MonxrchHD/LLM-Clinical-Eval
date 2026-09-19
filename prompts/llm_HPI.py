@@ -1,4 +1,4 @@
-from call_API import call_claude
+from call_API import call_claude, DEFAULT_MODEL
 from case_input import get_case_input
 
 
@@ -25,5 +25,5 @@ Provide only the final one-paragraph presentation, with no preamble, headers, or
 if __name__ == "__main__":
     case_text = get_case_input()
     summary = call_claude(build_hpi(case_text),
-                          model="claude-haiku-4-5-20251001",  max_tokens=10000)
+                          model=DEFAULT_MODEL,  max_tokens=10000)
     print(summary)
