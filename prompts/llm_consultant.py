@@ -1,4 +1,4 @@
-from call_API import call_claude
+from call_API import call_claude, DEFAULT_MODEL
 from prompts.llm_HPI import build_hpi
 from case_input import get_case_input
 
@@ -48,11 +48,12 @@ Here is the the case for you to evaluate:
     return prompt
 
 
-def get_consultant_response():
-    case_text = call_claude(build_hpi(get_case_input()), model = "claude-haiku-4-5-20251001",  max_tokens = 10000)
-    response = call_claude(build_consultant_prompt(case_text), model = "claude-haiku-4-5-20251001",  max_tokens = 10000)
+def get_consultant_response(raw_case):
+    case_text = call_claude(build_hpi(raw_case), model = DEFAULT_MODEL,  max_tokens = 10000)
+    response = call_claude(build_consultant_prompt(case_text), model = DEFAULT_MODEL,  max_tokens = 10000)
     return response, case_text
 
 if __name__ == "__main__":
-        response, case_text = get_consultant_response()
+        info = get_case_input()
+        response, case_text = get_consultant_response(info)
         print(response)
