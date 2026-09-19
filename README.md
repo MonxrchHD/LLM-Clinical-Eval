@@ -20,7 +20,7 @@ The pipeline runs in five stages:
 
 All three LLM calls share a consistent "attending physician" persona (set via the API's `system` parameter), while each call's specific task instructions live in its own prompt-building function.
 
-`![Demo of the pipeline running](assets/demo.gif)`
+`![Demo of the pipeline running](assets/README_demo.gif)`
 
 ## Project structure
 
