@@ -54,6 +54,8 @@ if __name__ == "__main__":
         scores = scores.removeprefix("```json").removesuffix("```").strip()
     judge_scores = json.loads(scores)
     total_score = calculate_total(judge_scores)
-    print(scores)
+    demo = response_text.split("\n")
+    example = "\n".join(demo[:10])
+    print(example)
     print(f"Total score: {total_score} / {rubric.total_points}")
         
