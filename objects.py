@@ -5,7 +5,7 @@ from typing import List, Dict
 class Item:
     id: str
     topic: str
-    criteria: dict[int, str]
+    criteria: Dict[int, str]
 
 @dataclass
 class Domain:
@@ -18,7 +18,7 @@ class Rubric:
     rubric_name: str
     total_points: int
     domains: List[Domain]
-    flags: Dict[str, bool]
+    flags: List[Dict]
 
 def build_items(item_dicts):
     items = []
