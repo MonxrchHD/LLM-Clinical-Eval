@@ -1,7 +1,5 @@
-
-
 def get_case_input():
-    case_text = ""
+    case = {}
     fields = {
         "Chief Complaint: ": "What is the chief complaint?",
         "PMH: ": "What is the patient's PMH?",
@@ -15,12 +13,14 @@ def get_case_input():
 
     for field, question in fields.items():
         info = input(question + " ")
-        case_text += f"{field}{info}\n"
+        case[field] = info
+    return case
+
+def build_case_text(case):
+    case_text = ""
+    for field, response in case.items():
+        case_text += f"{field}\n{response}\n"
 
     return case_text
 
-
-if __name__ == "__main__":
-    case_text = get_case_input()
-    print("\n===Assembled Case Text===\n")
-    print(case_text)
+    

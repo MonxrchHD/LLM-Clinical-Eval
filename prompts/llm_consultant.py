@@ -1,6 +1,6 @@
-from call_API import call_claude, DEFAULT_MODEL
+from call_API import call_claude, DEFAULT_MODEL, DEFAULT_MAX_TOKENS
 from prompts.llm_HPI import build_hpi
-from case_input import get_case_input
+from case_input import get_case_input, build_case_text
 
 def build_consultant_prompt(case_text):
     prompt = f"""Using the provided patient case and current, generally accepted clinical guidelines relevant to the presenting condition, provide definitive clinical recommendations with patient-specific rationale.
@@ -42,18 +42,19 @@ VI. Follow-up and continuity of care
 A. Provide a specific follow-up plan, including timeframe.
 B. Address coordination with other healthcare providers involved in the patient's care, if relevant.
 
-Here is the the case for you to evaluate:
+Here is the case for you to evaluate:
 {case_text}
 """
     return prompt
 
 
 def get_consultant_response(raw_case):
-    case_text = call_claude(build_hpi(raw_case), model = DEFAULT_MODEL,  max_tokens = 10000)
-    response = call_claude(build_consultant_prompt(case_text), model = DEFAULT_MODEL,  max_tokens = 10000)
+    case_text = call_claude(build_hpi(raw_case), model = DEFAULT_MODEL,  max_tokens = DEFAULT_MAX_TOKENS)
+    response = call_claude(build_consultant_prompt(case_text), model = DEFAULT_MODEL,  max_tokens = DEFAULT_MAX_TOKENS)
     return response, case_text
 
 if __name__ == "__main__":
-        info = get_case_input()
-        response, case_text = get_consultant_response(info)
-        print(response)
+    info = get_case_input()
+    raw = build_case_text(info)
+    response, case_text = get_consultant_response(raw)
+    print(response)
