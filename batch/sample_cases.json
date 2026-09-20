@@ -1,0 +1,22 @@
+[
+  {
+    "Chief Complaint: ": "Wheezing and difficulty breathing for 6 hours, worsening despite home nebulizer use",
+    "PMH: ": "Asthma (diagnosed age 4, multiple prior ED visits), eczema",
+    "PSH: ": "None",
+    "Current Medications: ": "Albuterol inhaler PRN, fluticasone inhaler twice daily",
+    "Pertinent clinical findings: ": "7-year-old, audible wheezing bilaterally, using accessory muscles to breathe, speaking in short phrases only, mild retractions",
+    "Allergies: ": "Peanuts, causes anaphylaxis (carries EpiPen)",
+    "Labs: ": "None obtained yet",
+    "Vitals: ": "BP 108/68, HR 128, RR 32, SpO2 91% on room air, Temp 98.9\u00b0F"
+  },
+  {
+    "Chief Complaint: ": "New-onset confusion and word-finding difficulty for 4 hours",
+    "PMH: ": "Atrial fibrillation (not on anticoagulation, patient reports \"forgot to take it\"), hyperlipidemia",
+    "PSH: ": "None",
+    "Current Medications: ": "Apixaban 5mg twice daily (per history, though not taken recently), atorvastatin 20mg daily",
+    "Pertinent clinical findings: ": "Expressive aphasia, right facial droop, right arm drift on pronator testing, alert and oriented to person only",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Fingerstick glucose 118, INR pending",
+    "Vitals: ": "BP 168/96, HR 92 (irregularly irregular), RR 18, SpO2 97% on room air"
+  }
+]
