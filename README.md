@@ -125,4 +125,4 @@ Python, PyYAML, python-dotenv, Anthropic API (Claude Haiku 4.5)
 
 ## Demo
 
-![Demo of the pipeline running](assets/README_demo.gif)
+![Demo of the pipeline running](Assets/README_demo.gif)
