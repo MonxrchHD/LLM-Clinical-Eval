@@ -45,7 +45,7 @@ Now provide the complete JSON object with a score for every item ID in the rubri
 if __name__ == "__main__":
     info = get_case_input()
     raw = build_case_text(info)
-    response_text, case_text = get_consultant_response(raw)
+    plan, case_text, summary = get_consultant_response(raw)
     
     rubric_text = ""
     for domain in rubric.domains:
@@ -58,7 +58,7 @@ if __name__ == "__main__":
         flags_text += f"{flag['name']}:\n{flag['description']}\n"
 
 
-    scores = call_claude(build_llm_judge(rubric_text, case_text, flags_text, response_text), model = DEFAULT_MODEL,  max_tokens = DEFAULT_MAX_TOKENS)
+    scores = call_claude(build_llm_judge(rubric_text, case_text, flags_text, plan), model = DEFAULT_MODEL,  max_tokens = DEFAULT_MAX_TOKENS)
     if scores.startswith("```json"):
         scores = scores.removeprefix("```json").removesuffix("```").strip()
     judge_scores = json.loads(scores)
@@ -73,7 +73,8 @@ if __name__ == "__main__":
             raw_case = info,
             flattened_case = raw,
             case_text = case_text,
-            response_text = response_text,
+            response_text = plan,
+            summary = summary,
             item_scores = item_scores_only,
             flag_results = flag_results,
             total_score = total_score,

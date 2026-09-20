@@ -10,6 +10,8 @@ If clinically important information is missing, state what information is needed
 You will be assessed on clinical accuracy, prioritization, guideline-concordant reasoning, dosing/titration appropriateness (if applicable), safety, and feasibility. Do not include links. Do not use bold, italics, underlining, emojis, highlighting, or tables. Format your response using an alphanumerical outline with the following progression: I, A, 1, a, i.
 Be concise. For each lettered/numbered item, provide your determination and the key supporting rationale in 1–3 sentences — do not restate general textbook background, enumerate exhaustive differentials, or explain concepts not specific to this patient. Prioritize depth only on the items most clinically significant to this case; brief acknowledgment is sufficient for items of lower relevance.
 
+End your treatment with a line starting with exactly SUMMARY: followed by a brief clinical summary about 3-4 sentences long to present to another attending physician also reviewing the case. For example, your response should end with a line like: SUMMARY: <your clinical summary here>
+
 I. Clinical decision-making and chief complaint prioritization
 A. State the chief complaint clearly and using appropriate clinical terminology.
 B. Prioritize the chief complaint and provide rationale supported by the case findings.
@@ -51,10 +53,12 @@ Here is the case for you to evaluate:
 def get_consultant_response(raw_case):
     case_text = call_claude(build_hpi(raw_case), model = DEFAULT_MODEL,  max_tokens = DEFAULT_MAX_TOKENS)
     response = call_claude(build_consultant_prompt(case_text), model = DEFAULT_MODEL,  max_tokens = DEFAULT_MAX_TOKENS)
-    return response, case_text
+    plan, summary = response.split("SUMMARY:")
+    return plan, case_text, summary
 
 if __name__ == "__main__":
     info = get_case_input()
     raw = build_case_text(info)
-    response, case_text = get_consultant_response(raw)
-    print(response)
+    plan, case_text, summary = get_consultant_response(raw)
+    print(plan)
+    print(summary)
