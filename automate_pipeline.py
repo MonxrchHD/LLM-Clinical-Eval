@@ -51,10 +51,27 @@ def build_rubric_and_flags_text():
         flags_text += f"{flag['name']}:\n{flag['description']}\n"
 
     return rubric_text, flags_text
-if  __name__ == "__main__":
+
+def run_batch(filepath):
+    with open("batch/sample_cases.json") as f:
+        cases = json.load(f)
     
     rubric_text, flags_text = build_rubric_and_flags_text()
-    raw_case = get_case_input()
-    summary = run_pipeline_for_case(raw_case, rubric_text, flags_text)
+    
+    for case_number, raw_case in enumerate(cases, start=1):
+        run_pipeline_for_case(raw_case, rubric_text, flags_text)
+        print(f"Case {case_number} finished")
 
-    print(summary)
+if  __name__ == "__main__":
+
+    choice = input("Please select: 'one case' or 'batches': ")
+
+    if choice == "batches":
+        run_batch("batch/sample_cases.json")
+    
+    elif choice == "one case":
+        rubric_text, flags_text = build_rubric_and_flags_text()
+        raw_case = get_case_input()
+        summary = run_pipeline_for_case(raw_case, rubric_text, flags_text)
+
+        print(summary)
