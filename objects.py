@@ -39,3 +39,5 @@ def build_rubric(rubric_dict):
     domains = build_domains(rubric_dict["domains"])
     rubric = Rubric(rubric_dict["rubric_name"], rubric_dict["total_points"], domains, rubric_dict["flags"])
     return rubric
+
+
