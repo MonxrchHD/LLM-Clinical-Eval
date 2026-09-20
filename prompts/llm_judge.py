@@ -16,12 +16,15 @@ with open("rubric/example_rubric.yaml") as f:
     data = yaml.safe_load(f)
 rubric = build_rubric(data)
 
-def build_llm_judge(rubric_text, case_text, response_text):
+def build_llm_judge(rubric_text, case_text, flags_text, response_text):
     prompt = f"""You are an expert clinical reviewer scoring an AI-generated clinical response against a structured rubric.
 
 Below is the rubric, listing each domain, its items, and the scoring criteria (0, 1, or 2) for each item.
 
 {rubric_text}
+
+In addition to scoring each item, also assess whether the response exhibits any of the following flagged issues:
+{flags_text}
 
 Here is the clinical case that was presented:
 
@@ -33,8 +36,8 @@ Here is the response you are scoring:
 
 Score the response on every single item listed in the rubric above. For each item, assign the score (0, 1, or 2) that best matches the response according to that item's criteria. Base your scoring only on what is explicitly present in the response — do not give credit for something the response does not actually say, and do not penalize for information that was not clinically necessary for this case.
 
-Respond with ONLY a single JSON object, and nothing else — no explanation, no markdown formatting, no text before or after the JSON. Use each item's exact ID as the key, and the numeric score as the value. For example, if the rubric had items A-1 and A-2, your entire response would look exactly like:
-{{"A-1": 2, "A-2": 1}}
+Respond with ONLY a single JSON object, and nothing else — no explanation, no markdown formatting, no text before or after the JSON. Use each item's exact ID as the key, and the numeric score as the value. For example, if the rubric had items A-1 and A-2. Each flag should be true if the response exhibits that issue, false if it doesn't. Your entire response would look exactly like:
+{{"scores": {{"A-1": 2, ...}}, "flags": {{"Critical Errors": false, ...}}}}
 
 Now provide the complete JSON object with a score for every item ID in the rubric above."""
     return prompt
@@ -50,13 +53,20 @@ if __name__ == "__main__":
         for item in domain.items:
             rubric_text += f"  Item: {item.id}, Topic: {item.topic}, Criteria: {item.criteria}\n"
 
+    flags_text = ""
+    for flag in rubric.flags:
+        flags_text += f"{flag['name']}:\n{flag['description']}\n"
 
-    scores = call_claude(build_llm_judge(rubric_text, case_text, response_text), model = DEFAULT_MODEL,  max_tokens = DEFAULT_MAX_TOKENS)
+
+    scores = call_claude(build_llm_judge(rubric_text, case_text, flags_text, response_text), model = DEFAULT_MODEL,  max_tokens = DEFAULT_MAX_TOKENS)
     if scores.startswith("```json"):
         scores = scores.removeprefix("```json").removesuffix("```").strip()
     judge_scores = json.loads(scores)
-    total_score = calculate_total(judge_scores)
-    print(judge_scores)
+    item_scores_only = judge_scores["scores"]
+    flag_results = judge_scores["flags"]
+    total_score = calculate_total(item_scores_only)
+    print(total_score)
+    print(flag_results)
     print(f"Total score: {total_score} / {rubric.total_points}")
 
     build_data_logger(
@@ -64,7 +74,8 @@ if __name__ == "__main__":
             flattened_case = raw,
             case_text = case_text,
             response_text = response_text,
-            item_scores = judge_scores,
+            item_scores = item_scores_only,
+            flag_results = flag_results,
             total_score = total_score,
             model_name = DEFAULT_MODEL,
             rubric_version = "v1"
