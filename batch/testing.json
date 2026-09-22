@@ -1,0 +1,32 @@
+[
+  {
+    "Chief Complaint: ": "Nausea, blurry/yellow-tinged vision, and palpitations for 2 days",
+    "PMH: ": "Atrial fibrillation, chronic kidney disease stage 3b (eGFR 32), heart failure",
+    "PSH: ": "None",
+    "Current Medications: ": "Digoxin 0.25mg daily, furosemide 40mg daily, lisinopril 5mg daily",
+    "Pertinent clinical findings: ": "Irregular rhythm, mild confusion noted by family",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Digoxin level 2.6 ng/mL (therapeutic range 0.5-2.0), potassium 5.2, creatinine 2.1",
+    "Vitals: ": "BP 102/68, HR 52 (irregular), RR 16, SpO2 97%"
+  },
+  {
+    "Chief Complaint: ": "Nausea, abdominal pain, and fatigue for 2 days",
+    "PMH: ": "Type 2 diabetes on empagliflozin, recent illness with poor oral intake, following a low-carbohydrate diet",
+    "PSH: ": "None",
+    "Current Medications: ": "Empagliflozin 10mg daily, metformin 500mg twice daily",
+    "Pertinent clinical findings: ": "Mild diffuse abdominal tenderness, dry mucous membranes",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Glucose 210, bicarbonate 14, elevated anion gap, urine ketones positive",
+    "Vitals: ": "BP 108/70, HR 104, RR 24, SpO2 98%"
+  },
+  {
+    "Chief Complaint: ": "Vomiting and watery diarrhea for 2 days, decreased wet diapers, 18-month-old, weighs 11 kg",
+    "PMH: ": "None",
+    "PSH: ": "None",
+    "Current Medications: ": "None",
+    "Pertinent clinical findings: ": "18-month-old, dry mucous membranes, decreased skin turgor, sunken fontanelle, lethargic but consolable",
+    "Allergies: ": "NKDA",
+    "Labs: ": "None obtained yet",
+    "Vitals: ": "HR 152, RR 32, BP 88/54, Temp 99.8°F, capillary refill 3 seconds"
+  }
+]
