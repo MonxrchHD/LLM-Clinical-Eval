@@ -1,0 +1,42 @@
+[
+  {
+    "Chief Complaint: ": "Exertional chest tightness for 3 weeks, resolves with rest",
+    "PMH: ": "Hyperlipidemia, prediabetes, former smoker (quit 2 years ago)",
+    "PSH: ": "None",
+    "Current Medications: ": "Atorvastatin 20mg daily",
+    "Pertinent clinical findings: ": "Normal heart sounds, no murmurs, no peripheral edema, chest wall non-tender",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Troponin negative, LDL 142",
+    "Vitals: ": "BP 138/86, HR 76, RR 16, SpO2 98%"
+  },
+  {
+    "Chief Complaint: ": "Increased shortness of breath and leg swelling over past week",
+    "PMH: ": "Heart failure with reduced ejection fraction (EF 30%), osteoarthritis",
+    "PSH: ": "None",
+    "Current Medications: ": "Lisinopril 10mg daily, metoprolol succinate 25mg daily, furosemide 20mg daily, ibuprofen 400mg three times daily (started 10 days ago for knee pain)",
+    "Pertinent clinical findings: ": "Bilateral lower extremity edema, mild crackles at lung bases, jugular venous distension present",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Creatinine 1.4 (baseline 1.0), BNP 890",
+    "Vitals: ": "BP 148/92, HR 88, RR 20, SpO2 94%"
+  },
+  {
+    "Chief Complaint: ": "Elevated blood pressure found at routine visit, no symptoms",
+    "PMH: ": "Obesity (BMI 31)",
+    "PSH: ": "None",
+    "Current Medications: ": "None",
+    "Pertinent clinical findings: ": "No end-organ damage signs, normal fundoscopic exam per history",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Basic metabolic panel normal, urinalysis no protein",
+    "Vitals: ": "BP 146/92 (average of 3 readings), HR 74, RR 14"
+  },
+  {
+    "Chief Complaint: ": "Nausea, blurry/yellow-tinged vision, and palpitations for 2 days",
+    "PMH: ": "Atrial fibrillation, chronic kidney disease stage 3b (eGFR 32), heart failure",
+    "PSH: ": "None",
+    "Current Medications: ": "Digoxin 0.25mg daily, furosemide 40mg daily, lisinopril 5mg daily",
+    "Pertinent clinical findings: ": "Irregular rhythm, mild confusion noted by family",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Digoxin level 2.6 ng/mL (therapeutic range 0.5-2.0), potassium 5.2, creatinine 2.1",
+    "Vitals: ": "BP 102/68, HR 52 (irregular), RR 16, SpO2 97%"
+  }
+]

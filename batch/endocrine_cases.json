@@ -1,0 +1,42 @@
+[
+  {
+    "Chief Complaint: ": "Increased thirst and urination for a month",
+    "PMH: ": "Obesity (BMI 33), family history of diabetes",
+    "PSH: ": "None",
+    "Current Medications: ": "None",
+    "Pertinent clinical findings: ": "No acute distress, no signs of diabetic ketoacidosis",
+    "Allergies: ": "NKDA",
+    "Labs: ": "HbA1c 8.1, fasting glucose 178, normal renal function",
+    "Vitals: ": "BP 132/84, HR 78, RR 14"
+  },
+  {
+    "Chief Complaint: ": "Nausea, abdominal pain, and fatigue for 2 days",
+    "PMH: ": "Type 2 diabetes on empagliflozin, recent illness with poor oral intake, following a low-carbohydrate diet",
+    "PSH: ": "None",
+    "Current Medications: ": "Empagliflozin 10mg daily, metformin 500mg twice daily",
+    "Pertinent clinical findings: ": "Mild diffuse abdominal tenderness, dry mucous membranes",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Glucose 210, bicarbonate 14, elevated anion gap, urine ketones positive",
+    "Vitals: ": "BP 108/70, HR 104, RR 24, SpO2 98%"
+  },
+  {
+    "Chief Complaint: ": "Fatigue and weight gain despite taking thyroid medication",
+    "PMH: ": "Hypothyroidism, diagnosed 3 years ago",
+    "PSH: ": "None",
+    "Current Medications: ": "Levothyroxine 50mcg daily",
+    "Pertinent clinical findings: ": "Dry skin, mild bradycardia, no goiter",
+    "Allergies: ": "NKDA",
+    "Labs: ": "TSH 12.4, free T4 low-normal",
+    "Vitals: ": "BP 118/76, HR 58, RR 14"
+  },
+  {
+    "Chief Complaint: ": "Racing heart, agitation, and fever for 1 day, recent upper respiratory infection",
+    "PMH: ": "Graves' disease, poorly controlled, admits missing methimazole doses for the past 3 weeks",
+    "PSH: ": "None",
+    "Current Medications: ": "Methimazole 10mg daily (nonadherent recently)",
+    "Pertinent clinical findings: ": "Tremor, warm moist skin, agitation, lid lag, no focal neurologic deficits",
+    "Allergies: ": "NKDA",
+    "Labs: ": "TSH undetectable, free T4 markedly elevated",
+    "Vitals: ": "BP 152/88, HR 138 (sinus tachycardia), Temp 102.6°F, RR 24, SpO2 97%"
+  }
+]

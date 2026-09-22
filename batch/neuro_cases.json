@@ -1,0 +1,32 @@
+[
+  {
+    "Chief Complaint: ": "Recurrent throbbing headaches with light sensitivity, 2-3 times per month for 6 months",
+    "PMH: ": "None",
+    "PSH: ": "None",
+    "Current Medications: ": "Ibuprofen as needed, with some relief",
+    "Pertinent clinical findings: ": "Normal neurologic exam, no focal deficits",
+    "Allergies: ": "NKDA",
+    "Labs: ": "None obtained",
+    "Vitals: ": "BP 118/76, HR 72"
+  },
+  {
+    "Chief Complaint: ": "Restlessness, tremor, and diarrhea for 1 day, started a new headache medication yesterday",
+    "PMH: ": "Depression, chronic low back pain, migraines",
+    "PSH: ": "None",
+    "Current Medications: ": "Sertraline 100mg daily, tramadol 50mg taken regularly for back pain, sumatriptan 50mg started yesterday for migraine",
+    "Pertinent clinical findings: ": "Agitated, tremor, hyperreflexia, clonus present, diaphoretic",
+    "Allergies: ": "NKDA",
+    "Labs: ": "WBC mildly elevated, CK normal",
+    "Vitals: ": "BP 152/94, HR 118, Temp 101.4°F, RR 22"
+  },
+  {
+    "Chief Complaint: ": "Witnessed single generalized tonic-clonic seizure lasting 2 minutes, now postictal",
+    "PMH: ": "None",
+    "PSH: ": "None",
+    "Current Medications: ": "None",
+    "Pertinent clinical findings: ": "Postictal confusion, no focal neurologic deficits, tongue laceration noted",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Glucose 92, electrolytes normal",
+    "Vitals: ": "BP 128/80, HR 92, Temp 98.2°F"
+  }
+]

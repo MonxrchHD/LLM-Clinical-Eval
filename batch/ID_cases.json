@@ -1,0 +1,32 @@
+[
+  {
+    "Chief Complaint: ": "Burning with urination and urinary frequency for 2 days",
+    "PMH: ": "None",
+    "PSH: ": "None",
+    "Current Medications: ": "None",
+    "Pertinent clinical findings: ": "Suprapubic tenderness, no costovertebral angle tenderness, no fever",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Urinalysis positive for leukocyte esterase and nitrites",
+    "Vitals: ": "BP 118/74, HR 76, Temp 98.6°F"
+  },
+  {
+    "Chief Complaint: ": "Fever, confusion, and decreased urination for 1 day, family reports patient 'not acting right'",
+    "PMH: ": "Recurrent urinary tract infections",
+    "PSH: ": "None",
+    "Current Medications: ": "None",
+    "Pertinent clinical findings: ": "Lethargic, bilateral costovertebral angle tenderness, delayed capillary refill, skin mottling",
+    "Allergies: ": "Penicillin, causes anaphylaxis with throat swelling and hypotension",
+    "Labs: ": "WBC 22,000, lactate 4.2, creatinine 2.3 (baseline 0.9)",
+    "Vitals: ": "BP 84/52, HR 128, Temp 102.9°F, RR 26, SpO2 93%"
+  },
+  {
+    "Chief Complaint: ": "Runny nose, sore throat, mild cough for 3 days",
+    "PMH: ": "None",
+    "PSH: ": "None",
+    "Current Medications: ": "None",
+    "Pertinent clinical findings: ": "Clear rhinorrhea, mild pharyngeal erythema, no exudate, lungs clear",
+    "Allergies: ": "NKDA",
+    "Labs: ": "Rapid strep test negative",
+    "Vitals: ": "BP 116/72, HR 80, Temp 99.1°F, RR 16, SpO2 99%"
+  }
+]

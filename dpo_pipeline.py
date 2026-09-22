@@ -31,17 +31,21 @@ def build_dpo_dataset(file):
     rubric_text, flags_text = build_rubric_and_flags_text()
     with open(file) as f:
         for line in f:
-            review = json.loads(line)
-            case_text = review["HPI_summary"]
-            chosen_response = review["consultant_response"]
-            total_score = review["total_score"]
+            try:
+                review = json.loads(line)
+                case_text = review["HPI_summary"]
+                chosen_response = review["consultant_response"]
+                total_score = review["total_score"]
+            except json.decoder.JSONDecodeError:
+                print("Skipping malformed case in data_logs.jsonl")
+                continue
             try:
                 case, consultant_response, flawed_response, flag, total, item = generate_dpo_pair(case_text, chosen_response, rubric_text, flags_text)
             except json.JSONDecodeError:
                 print("Skipping case due to malformed judge response")
                 continue
 
-            if total_score - total >=8:
+            if total_score - total >=10:
                 dpo_pair_logger(
                 case_text = case_text,
                 response_text = consultant_response,
