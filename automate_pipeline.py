@@ -8,6 +8,18 @@ from objects import build_rubric
 import yaml
 from case_input import get_case_input
 
+def run_flawed_case(rubric_text, flags_text, case_text, flawed_response):
+    flaw = call_claude(build_llm_judge(rubric_text, case_text, flags_text, flawed_response), model=DEFAULT_MODEL, max_tokens=DEFAULT_MAX_TOKENS)
+    if flaw.startswith("```json"):
+            flaw = flaw.removeprefix("```json").removesuffix("```").strip()
+    judge_scores = json.loads(flaw)
+    item_scores_only = judge_scores["scores"]
+    flag_results = judge_scores["flags"]
+    total_score = calculate_total(item_scores_only)
+
+    
+    return flag_results, total_score, item_scores_only
+
 def run_pipeline_for_case(raw_text, rubric_text, flags_text):
     flattened = build_case_text(raw_text)
     plan, case_text, summary = get_consultant_response(flattened)
@@ -53,7 +65,7 @@ def build_rubric_and_flags_text():
     return rubric_text, flags_text
 
 def run_batch(filepath):
-    with open("batch/sample_cases.json") as f:
+    with open(filepath) as f:
         cases = json.load(f)
     
     rubric_text, flags_text = build_rubric_and_flags_text()
@@ -64,14 +76,23 @@ def run_batch(filepath):
 
 if  __name__ == "__main__":
 
-    choice = input("Please select: 'one case' or 'batches': ")
+    choice = input("Please select: 'one case', 'batches' or 'test': ")
 
     if choice == "batches":
-        run_batch("batch/sample_cases.json")
+        choice = input("Which file: ")
+        run_batch(choice)
     
     elif choice == "one case":
         rubric_text, flags_text = build_rubric_and_flags_text()
         raw_case = get_case_input()
         summary = run_pipeline_for_case(raw_case, rubric_text, flags_text)
+
+        print(summary)
+
+    elif choice == "test":
+        rubric_text, flags_text = build_rubric_and_flags_text()
+        case_text = f"This is a patient with a history of atrial fibrillation, heart failure, and stage 3b chronic kidney disease presenting with a 2-day history of nausea, blurry vision with a yellow tint, and palpitations. He is currently on digoxin 0.25 mg daily, furosemide 40 mg daily, and lisinopril 5 mg daily, with no known drug allergies and no prior surgeries. On examination, he has an irregular rhythm and mild confusion noted by family members. Vital signs show a blood pressure of 102/68, heart rate of 52 with an irregular pattern, respiratory rate of 16, and oxygen saturation of 97% on room air. Laboratory evaluation reveals a digoxin level of 2.6 ng/mL (which exceeds the therapeutic range of 0.5–2.0), potassium of 5.2, and creatinine of 2.1."
+        flawed_response = f"This patient has atrial fibrillation with adequate rate control on their current regimen. Continue digoxin 0.25mg daily, furosemide 40mg daily, and lisinopril 5mg daily as currently prescribed. The nausea is likely related to a mild viral illness and should resolve on its own; recommend supportive care with antiemetics as needed. Follow up in two weeks to reassess symptoms."
+        summary = run_flawed_case(case_text, rubric_text, flags_text, flawed_response)
 
         print(summary)
