@@ -55,9 +55,16 @@ llm-clinical-eval/
 │   ├── llm_HPI.py                    # Reformats raw input into a clinical presentation
 │   ├── llm_consultant.py             # Generates clinical recommendations + summary
 │   └── llm_judge.py                  # Scores a response against the rubric, detects flags
+├── train_dpo.py                      # QLoRA/DPO fine-tuning script (run inside ft-env)
+├── test_inference.py                 # Runs a held-out case through the fine-tuned adapter
+├── test_inference_base.py            # Runs the same case through the unmodified base model, for comparison
+├── models/                           # Saved LoRA adapters (not committed - see .gitignore)
+├── ft-env/                           # Python 3.11 virtual environment for fine-tuning (not committed)
 ├── .env                                # API key (not committed)
 ├── .gitignore
-└── README.md
+├── README.md
+├── SETUP.md                          # Local fine-tuning environment setup, including Windows-specific gotchas
+└── TRAINING_RESULTS.md               # Fine-tuning experiment results and honest findings
 ```
 
 ## Usage
@@ -119,13 +126,15 @@ The included `example_rubric.yaml` is a generalized, condition-agnostic version 
 
 ## Roadmap
 
+**Completed:**
+- **QLoRA/DPO fine-tuning attempt** — fine-tuned Mistral-7B-Instruct-v0.3 locally (RTX 3060, 12GB VRAM) via Unsloth + `trl`'s `DPOTrainer`, across two training runs of increasing dataset size. Full setup, metrics, and an honest analysis of the results (including a clear overfitting finding and what would be needed to improve on it) are documented in **`TRAINING_RESULTS.md`**; environment setup details are in `SETUP.md`.
+
 **In progress:**
-- **QLoRA/DPO fine-tuning attempt** — using `data/dpo_training_data.jsonl` to fine-tune a small open-source model (targeting a 7B-class model, e.g. Mistral-7B or Llama-3-8B, via `trl`'s `DPOTrainer` with 4-bit quantization) locally on consumer GPU hardware (RTX 3060, 12GB VRAM). The goal is to distill the judged clinical reasoning quality captured in this dataset into a smaller, locally-runnable consultant model — a genuinely different model from the Claude-based consultant that generated the training data.
+- **Source-grounded consultant (RAG)** — retrieval over clinical guidelines/literature (e.g., PubMed) so consultant recommendations are grounded in retrievable, citable sources.
 
 **Planned next:**
 - **Manual scoring path** — allow a human to score a response independently, to compute inter-rater agreement (e.g., weighted kappa) between the LLM judge and a human reviewer.
 - **Multi-model comparison** — compare consultant recommendations across multiple LLM providers.
-- **Source-grounded consultant (RAG)** — retrieval over clinical guidelines/literature (e.g., PubMed) so consultant recommendations are grounded in retrievable, citable sources. A substantial project on its own; scoped but not yet started.
 - **Patient-facing mode** — a separate, clearly-disclaimed educational mode where a patient can input their own diagnosis/summary and receive an explanation with explorable sources, distinct from the clinician-facing consultant mode, and explicitly **not** intended to provide medical advice or diagnosis. Would likely involve a conversational, multi-turn interface (the model asking clarifying questions rather than requiring all information upfront) and a web front end — a substantial project on its own, planned as the last major phase.
 
 The full roadmap (fine-tuning → RAG → conversational UI) is unlikely to be fully complete on any fixed timeline; the priority is finishing and being able to fully explain each piece, with clear documentation of architecture decisions for whatever isn't yet built.
